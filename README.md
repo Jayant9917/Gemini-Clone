@@ -1,12 +1,56 @@
-# React + Vite
+# Gemini Clone
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React-based clone of Google Gemini, using the Gemini API for AI-powered chat.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Chat interface with Gemini API
+- Sidebar for navigation/history
+- Streaming responses
+- Modern UI
 
-## Expanding the ESLint configuration
+## Setup
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. **Install dependencies:**
+   ```bash
+   npm install
+   ```
+
+2. **Set up your Gemini API key:**
+   - For practice, the API key is hardcoded in `src/config/gemini.js`.
+   - For production, use environment variables and do not expose your key in frontend code.
+
+3. **Run the app:**
+   ```bash
+   npm run dev
+   ```
+
+## Project Structure
+
+- `src/components/` — React components (Main, Sidebar, etc.)
+- `src/config/gemini.js` — Gemini API integration (streaming, prompt handling)
+- `src/context/Context.jsx` — React context for state management
+- `src/assets/` — Icons and images
+- `public/` — Static assets
+
+## How the Gemini API Integration Works
+
+- The API key is currently hardcoded for practice in `src/config/gemini.js`.
+- The `main(prompt)` function in `gemini.js`:
+  - Sends the user prompt to the Gemini API using `generateContentStream`.
+  - Collects the streaming response chunks and combines them into a single string.
+  - Returns the full response text for rendering in the UI.
+- In production, always use environment variables for API keys.
+
+## Customization
+
+- Update the UI in `src/components/` as needed.
+- Change the model or API logic in `src/config/gemini.js`.
+- Add more features (history, settings, etc.) as desired.
+
+## Error Handling
+
+- The app handles streaming and displays the Gemini response in the UI.
+- Some non-breaking errors from the Gemini SDK (like `Incomplete JSON segment at the end`) may appear in the console; these can usually be ignored during development.
+
+

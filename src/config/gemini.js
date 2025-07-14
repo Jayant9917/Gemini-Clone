@@ -42,10 +42,15 @@ async function main(prompt) {
     config,
     contents,
   });
-  let fileIndex = 0;
+
+  let fullText = "";
   for await (const chunk of response) {
-    console.log(chunk.text);
+    const part = chunk?.candidates?.[0]?.content?.parts?.[0]?.text;
+    if (part) {
+      fullText += part;
+    }
   }
+  return fullText;
 }
 
 export default main;
