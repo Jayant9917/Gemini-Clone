@@ -13,7 +13,7 @@ const Main = () => {
             <div className="nav">
                 <p>Gemini</p>
                 <img src={assets.user_icon} alt="" />
-            </div>
+            </div> 
             <div className="main-container">
 
                 {!showResult
@@ -49,8 +49,15 @@ const Main = () => {
                         </div>
                         <div className="result-data">
                             <img src={assets.gemini_icon} alt="" />
-                            <p dangerouslySetInnerHTML={{__html: resultData}}></p>
-                        </div>
+                            {loading
+                            ? <div className="loader">
+                                <hr />
+                                <hr />
+                                <hr />
+                            </div>
+                            :<p dangerouslySetInnerHTML={{__html: resultData}}></p>
+                            }
+                            </div>
                     </div>
                 }
 
